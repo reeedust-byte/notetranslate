@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f5f4ef;
+  --color-panel: #ffffff;
+  --color-sunk: #faf9f6;
+  --color-line: #e6e3da;
+  --color-ink: #1f2328;
+  --color-muted: #6b6f76;
+  --color-faint: #9b9ea4;
+  --color-accent: #3060e0;
+  --color-accent-soft: #e9eefc;
+  --color-rec: #e5484d;
+  --color-rec-soft: #fdecec;
+  --color-star: #e89b0c;
+  --color-star-soft: #fdf4e1;
+  --color-good: #23935e;
+  --color-good-soft: #e5f5ec;
+  --color-bad: #d2434a;
+  --color-bad-soft: #fbeaea;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #131416;
+    --color-panel: #1b1c1f;
+    --color-sunk: #17181a;
+    --color-line: #2c2e33;
+    --color-ink: #e9e9e6;
+    --color-muted: #a0a3aa;
+    --color-faint: #73767d;
+    --color-accent: #7193f3;
+    --color-accent-soft: #222a3d;
+    --color-rec: #f06b6f;
+    --color-rec-soft: #3a2224;
+    --color-star: #f2b544;
+    --color-star-soft: #392f1b;
+    --color-good: #4cc38a;
+    --color-good-soft: #1b3127;
+    --color-bad: #f07076;
+    --color-bad-soft: #3a2224;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Rendered Markdown (summaries, answers). */
+.md {
+  font-size: 0.925rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.md > * + * {
+  margin-top: 0.6em;
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  font-weight: 650;
+  line-height: 1.35;
+  margin-top: 1.1em;
+}
+.md h1 {
+  font-size: 1.25rem;
+}
+.md h2 {
+  font-size: 1.1rem;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--color-line);
+}
+.md h3 {
+  font-size: 1rem;
+}
+.md > :first-child {
+  margin-top: 0;
+}
+.md ul {
+  list-style: disc;
+  padding-left: 1.25em;
+}
+.md ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.md li + li {
+  margin-top: 0.2em;
+}
+.md li > ul,
+.md li > ol {
+  margin-top: 0.2em;
+}
+.md strong {
+  font-weight: 650;
+}
+.md a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.md code {
+  font-size: 0.85em;
+  background: var(--color-sunk);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+}
+.md pre {
+  background: var(--color-sunk);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: 0.75em 1em;
+  overflow-x: auto;
+}
+.md pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.md blockquote {
+  border-left: 3px solid var(--color-line);
+  padding-left: 0.8em;
+  color: var(--color-muted);
+}
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  display: block;
+  overflow-x: auto;
+}
+.md th,
+.md td {
+  border: 1px solid var(--color-line);
+  padding: 0.35em 0.6em;
+  text-align: left;
+  vertical-align: top;
+}
+.md th {
+  background: var(--color-sunk);
+  font-weight: 600;
+}
+.md hr {
+  border-color: var(--color-line);
+}
+.md .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25em 0;
+}
+
+/* Timestamp citations that seek the recording. */
+.ts-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1.4;
+  padding: 0 0.4em;
+  margin: 0 0.1em;
+  border-radius: 999px;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+.ts-chip:hover {
+  filter: brightness(0.95);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.rec-dot {
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
